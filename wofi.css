@@ -8,7 +8,7 @@
 @define-color fg_bright #1c1c1c;
 
 window {
-    border-radius: 12px;
+    border-radius: 20px;
     background-color: @bg;
     border: 2px solid @gray3;
 }

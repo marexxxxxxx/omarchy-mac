@@ -61,5 +61,6 @@ cyan = "#64d2ff"
 white = "#8e8e93"
 
 [window]
-opacity = 0.85
+opacity = 0.90
 decorations = "transparent"
+blur = true

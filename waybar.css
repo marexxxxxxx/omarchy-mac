@@ -3,5 +3,10 @@
 
 window#waybar {
     background: @background;
-    border-radius: 12px;
+    border-radius: 20px;
+    color: @foreground;
+}
+
+window#waybar * {
+    color: @foreground;
 }
