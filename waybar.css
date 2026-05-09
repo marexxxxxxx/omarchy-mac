@@ -1,6 +1,6 @@
 /* Aamis Theme - macOS Menubar Design */
-@define-color menubar_bg #4a5f8f;
-@define-color menubar_semi rgba(74, 95, 143, 0.75);
+@define-color menubar_bg rgba(173, 216, 230, 0.15); /* Ultra light blue, transparent */
+@define-color menubar_semi rgba(173, 216, 230, 0.25); /* Slightly more opaque for sections */
 @define-color pill_bg rgba(100, 130, 180, 0.35);
 @define-color text_white #ffffff;
 @define-color icon_color #ffffff;
@@ -18,14 +18,14 @@
 }
 
 window#waybar {
-    background-color: @menubar_semi;
+    background-color: transparent;
     background-image: none;
     color: @text_white;
     margin: 0;
     padding: 0;
 }
 
-/* Main container - continuous bar */
+/* Main container - transparent bar with colored sections */
 .modules-left,
 .modules-center,
 .modules-right {
@@ -37,13 +37,19 @@ window#waybar {
 }
 
 .modules-left {
+    background-color: @menubar_bg;
+    border-radius: 0 8px 8px 0;
     padding-left: 24px;
-    padding-right: 0;
+    padding-right: 16px;
+    margin-right: 8px;
 }
 
 .modules-right {
+    background-color: @menubar_bg;
+    border-radius: 8px 0 0 8px;
     padding-right: 24px;
-    padding-left: 0;
+    padding-left: 16px;
+    margin-left: 8px;
 }
 
 .modules-center {
