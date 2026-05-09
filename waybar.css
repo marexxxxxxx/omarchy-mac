@@ -24,7 +24,7 @@ window#waybar {
     background-image: none;
     color: @text_white;
     margin: 0;
-    padding: 0;
+    padding: 8px 12px;
 }
 
 /* Main container - transparent bar with colored sections */
@@ -40,7 +40,7 @@ window#waybar {
 
 .modules-left {
     background-color: @menubar_bg;
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 16px 16px 0;
     padding-left: 24px;
     padding-right: 16px;
     margin-right: 8px;
@@ -49,7 +49,7 @@ window#waybar {
 
 .modules-right {
     background-color: @menubar_bg;
-    border-radius: 8px 0 0 8px;
+    border-radius: 16px 0 0 16px;
     padding-right: 24px;
     padding-left: 16px;
     margin-left: 8px;
@@ -102,16 +102,6 @@ tooltip label {
     border-radius: 6px;
 }
 
-/* Active workspace gets pill background */
-#workspaces button.active {
-    background: @pill_bg;
-    border-radius: 12px;
-    padding: 4px 10px;
-    color: @text_white;
-    font-weight: 500;
-    margin-right: 16px;
-}
-
 #workspaces button.urgent {
     color: @warning_red;
 }
@@ -162,25 +152,6 @@ tooltip label {
     padding: 0;
     margin-right: 12px;
     font-size: 12px;
-}
-
-/* Spotlight search */
-#custom-spotlight {
-    padding: 0;
-    margin-right: 12px;
-    font-size: 13px;
-    font-weight: 400;
-}
-
-/* Control Center - Active pill */
-#custom-controlcenter {
-    background: @pill_bg;
-    border-radius: 12px;
-    padding: 4px 10px;
-    color: @text_white;
-    font-weight: 400;
-    font-size: 12px;
-    margin-right: 16px;
 }
 
 /* Battery - Apple-style */
@@ -236,11 +207,6 @@ window#waybar.light #workspaces button.active {
 
 window#waybar.light #workspaces button:hover {
     background: rgba(0, 0, 0, 0.1);
-}
-
-window#waybar.light #custom-controlcenter {
-    background: rgba(0, 122, 255, 0.3);
-    color: @text_black;
 }
 
 window#waybar.light #battery {
