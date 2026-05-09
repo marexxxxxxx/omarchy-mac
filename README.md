@@ -53,16 +53,35 @@ That's it! Your app launcher (Walker) and menu bar (Waybar) now have the macOS L
 
 ### Auto-Configuration Hook (Optional)
 
-To automatically configure Walker every time you switch to the Aamis theme:
+This repository includes a hook script at `.config/omarchy/hooks/theme-set` that configures Walker and Waybar automatically when `omarchy theme set aamis` runs.
+
+If you installed the theme from Omarchy and want the hook enabled, do this:
 
 ```bash
-# Copy the theme-set hook to your Omarchy hooks directory
 mkdir -p ~/.config/omarchy/hooks
 cp ~/.config/omarchy/themes/aamis/.config/omarchy/hooks/theme-set ~/.config/omarchy/hooks/theme-set
 chmod +x ~/.config/omarchy/hooks/theme-set
 ```
 
-Now whenever you run `omarchy theme set aamis`, Walker will automatically be configured with the Liquid Glass theme!
+If you installed the theme from this repository locally, use this instead:
+
+```bash
+mkdir -p ~/.config/omarchy/hooks
+cp path/to/omarchy-mac/.config/omarchy/hooks/theme-set ~/.config/omarchy/hooks/theme-set
+chmod +x ~/.config/omarchy/hooks/theme-set
+```
+
+Now whenever you run `omarchy theme set aamis`, Walker and Waybar will be configured automatically.
+
+### Repo Contents for Walker Support
+
+This repo already includes the Walker theme assets and hook script in these locations:
+
+- `walker/themes/aamis/style.css`
+- `.config/omarchy/hooks/theme-set`
+- `.omarchy-install`
+- `waybar.css`
+- `waybar.jsonc`
 
 ### Manual Installation
 
