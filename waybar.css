@@ -1,9 +1,11 @@
 /* Aamis Theme - macOS Menubar Design */
-@define-color menubar_bg rgba(173, 216, 230, 0.15); /* Ultra light blue, transparent */
-@define-color menubar_semi rgba(173, 216, 230, 0.25); /* Slightly more opaque for sections */
-@define-color pill_bg rgba(100, 130, 180, 0.35);
+@define-color menubar_bg rgba(70, 130, 180, 0.4); /* Darker blue, more opaque */
+@define-color menubar_semi rgba(70, 130, 180, 0.6); /* More opaque for sections */
+@define-color pill_bg rgba(100, 130, 180, 0.5);
 @define-color text_white #ffffff;
+@define-color text_black #000000;
 @define-color icon_color #ffffff;
+@define-color icon_color_dark #000000;
 @define-color warning_red #ff3b30;
 
 * {
@@ -42,6 +44,7 @@ window#waybar {
     padding-left: 24px;
     padding-right: 16px;
     margin-right: 8px;
+    color: @text_white;
 }
 
 .modules-right {
@@ -50,6 +53,7 @@ window#waybar {
     padding-right: 24px;
     padding-left: 16px;
     margin-left: 8px;
+    color: @text_white;
 }
 
 .modules-center {
@@ -190,4 +194,27 @@ tooltip label {
     font-weight: 400;
     font-size: 12px;
     letter-spacing: 0;
+}
+
+/* === LIGHT MODE SUPPORT === */
+/* For light backgrounds - add class "light" to window#waybar for light mode */
+window#waybar.light .modules-left,
+window#waybar.light .modules-right {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: @text_black;
+}
+
+window#waybar.light .modules-left *,
+window#waybar.light .modules-right * {
+    color: @text_black;
+}
+
+window#waybar.light #workspaces button.active {
+    background: rgba(0, 122, 255, 0.2);
+    color: @text_black;
+}
+
+window#waybar.light #custom-controlcenter {
+    background: rgba(0, 122, 255, 0.3);
+    color: @text_black;
 }
