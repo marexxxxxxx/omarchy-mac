@@ -45,13 +45,13 @@
   },
 
   "custom/app_notification": {
-    "format": "●¹",
+    "format": "●",
     "tooltip": "App Notification",
     "tooltip-format": "1 notification"
   },
 
   "custom/weather": {
-    "format": "☀",
+    "format": "☼",
     "tooltip": "Weather - 68°F",
     "interval": 3600
   },
@@ -75,8 +75,15 @@
   },
 
   "custom/network_link": {
-    "format": "⛓",
-    "tooltip": "Network"
+    "format": "{icon}",
+    "format-icons": {
+      "ethernet": "⧈",
+      "wifi": "⚚"
+    },
+    "tooltip": "Network Connection",
+    "exec": "ip route | grep -q 'default via' && (ip route | grep -q 'dev wlan' && echo '{\"icon\": \"⚚\", \"tooltip\": \"WiFi Connected\"}' || echo '{\"icon\": \"⧈\", \"tooltip\": \"Ethernet Connected\"}') || echo '{\"icon\": \"⛓\", \"tooltip\": \"No Network\"}'",
+    "interval": 10,
+    "return-type": "json"
   },
 
   "custom/spotlight": {
