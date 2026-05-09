@@ -59,7 +59,7 @@
   },
 
   "custom/app_notification": {
-    "format": "◈",
+    "format": "◈¹",
     "tooltip": "App Notification",
     "tooltip-format": "1 notification"
   },
@@ -90,18 +90,6 @@
     "tooltip": "Network"
   },
 
-  "battery": {
-    "states": {
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ⚡",
-    "format-plugged": "{capacity}% 🔌",
-    "format-icons": ["🔋", "🔋", "🔋", "🔋", "🔋"],
-    "tooltip-format": "Battery {capacity}%"
-  },
-
   "custom/spotlight": {
     "format": "⌕",
     "tooltip": "Spotlight Search",
@@ -114,8 +102,20 @@
     "on-click": "swaync-client -t -sw"
   },
 
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ⚡",
+    "format-plugged": "{capacity}% 🔌",
+    "format-icons": ["🔋", "🔋", "🔋", "🔋", "🔋"],
+    "tooltip-format": "Battery {capacity}%"
+  },
+
   "clock": {
-    "format": "{:%a %b %d}  {:%I:%M %p}",
+    "format": "{:%a %b %d  %I:%M %p}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   }
 }

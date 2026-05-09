@@ -23,7 +23,6 @@ window#waybar {
     color: @text_white;
     margin: 0;
     padding: 0;
-    height: 28px;
 }
 
 /* Main container - continuous bar */
@@ -35,9 +34,6 @@ window#waybar {
     box-shadow: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    align-items: center;
-    height: 28px;
 }
 
 .modules-left {
@@ -51,7 +47,6 @@ window#waybar {
 }
 
 .modules-center {
-    flex-grow: 1;
 }
 
 /* Tooltips */
@@ -67,77 +62,44 @@ tooltip label {
     font-size: 11px;
 }
 
-/* === LEFT SECTION: WORKSPACE SWITCHER === */
-
-/* Workspace icon (≡) */
-#custom-workspace_icon {
+/* Workspaces */
+#workspaces {
+    margin: 0;
     padding: 0;
-    margin-right: 16px;
-    font-size: 13px;
-    font-weight: 400;
 }
 
-/* Workspace number "1" */
-#custom-workspace_1 {
+#workspaces button {
+    background: transparent;
+    border: none;
     padding: 0;
     margin-right: 16px;
     font-weight: 400;
     font-size: 12px;
+    color: @text_white;
 }
 
-/* Active workspace indicator - pill with dot */
-#custom-active_workspace {
+/* Active workspace gets pill background */
+#workspaces button.active {
     background: @pill_bg;
     border-radius: 12px;
     padding: 4px 10px;
     color: @text_white;
-    font-weight: 400;
-    font-size: 12px;
+    font-weight: 500;
     margin-right: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-/* Workspace numbers 3, 4, 5 */
-#custom-workspace_3,
-#custom-workspace_4,
-#custom-workspace_5 {
-    padding: 0;
-    margin-right: 16px;
-    font-size: 12px;
-    font-weight: 400;
+#workspaces button.urgent {
+    color: @warning_red;
 }
-
-/* === CENTER SECTION === */
-/* Empty - continuous background */
 
 /* === RIGHT SECTION: STATUS ICONS === */
 
 /* App notification with badge */
 #custom-app_notification {
-    position: relative;
     padding: 0;
     margin-right: 12px;
     font-size: 12px;
     font-weight: 400;
-}
-
-#custom-app_notification::after {
-    content: "1";
-    position: absolute;
-    bottom: -2px;
-    left: -2px;
-    background: @warning_red;
-    color: @text_white;
-    border-radius: 50%;
-    width: 8px;
-    height: 8px;
-    font-size: 8px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 /* Weather display */
@@ -178,27 +140,6 @@ tooltip label {
     font-size: 12px;
 }
 
-/* Battery */
-#battery {
-    font-weight: 400;
-    font-size: 12px;
-    margin-right: 12px;
-    display: flex;
-    align-items: center;
-}
-
-#battery.charging {
-    color: #34c759;
-}
-
-#battery.warning {
-    color: #d4a800;
-}
-
-#battery.critical {
-    color: @warning_red;
-}
-
 /* Spotlight search */
 #custom-spotlight {
     padding: 0;
@@ -216,8 +157,25 @@ tooltip label {
     font-weight: 400;
     font-size: 12px;
     margin-right: 16px;
-    display: flex;
-    align-items: center;
+}
+
+/* Battery */
+#battery {
+    font-weight: 400;
+    font-size: 12px;
+    margin-right: 12px;
+}
+
+#battery.charging {
+    color: #34c759;
+}
+
+#battery.warning {
+    color: #d4a800;
+}
+
+#battery.critical {
+    color: @warning_red;
 }
 
 /* Clock */
