@@ -59,6 +59,16 @@ if [[ -f "$THEME_DIR/waybar.jsonc" ]]; then
   echo "✓ Waybar layout installed"
 fi
 
+# Copy theme hook into Omarchy hooks
+HOOK_SRC="$THEME_DIR/.config/omarchy/hooks/theme-set"
+HOOK_DST="$HOME/.config/omarchy/hooks/theme-set"
+if [[ -f "$HOOK_SRC" ]]; then
+  mkdir -p "$HOME/.config/omarchy/hooks"
+  cp "$HOOK_SRC" "$HOOK_DST"
+  chmod +x "$HOOK_DST"
+  echo "✓ Theme hook installed"
+fi
+
 # ============================================
 # Restart Services
 # ============================================

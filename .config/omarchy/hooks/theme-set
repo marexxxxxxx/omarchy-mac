@@ -1,28 +1,64 @@
 #!/bin/bash
-# Aamis Theme Hook - Automatically configure Walker when theme is set
-# This hook runs automatically when: omarchy theme set aamis
+# Aamis Theme Hook - Automatically configure Walker and Waybar when the Aamis theme is applied.
+# This hook runs when the user executes: omarchy theme set aamis
+
+set -e
 
 THEME_NAME="$1"
+AAMIS_NAME="aamis"
 
-if [[ "$THEME_NAME" == "aamis" || "$THEME_NAME" == "Aamis" ]]; then
-  echo "🎨 Configuring Walker for Aamis theme..."
-  
-  # Create walker theme directory
-  mkdir -p ~/.config/walker/themes/omarchy-aamis
-  
-  # Copy walker CSS from the installed theme
-  THEME_PATH="$HOME/.config/omarchy/themes/aamis"
-  if [[ -f "$THEME_PATH/walker/themes/omarchy-aamis/style.css" ]]; then
-    cp "$THEME_PATH/walker/themes/omarchy-aamis/style.css" ~/.config/walker/themes/omarchy-aamis/
-    
-    # Update walker config
-    if [[ -f "$HOME/.config/walker/config.toml" ]]; then
-      sed -i 's/^theme = .*/theme = "omarchy-aamis"/' ~/.config/walker/config.toml
-    fi
-    
-    # Restart walker
-    omarchy restart walker 2>/dev/null || true
-    
-    echo "✓ Walker configured with Aamis theme"
-  fi
+if [[ "$THEME_NAME" != "$AAMIS_NAME" && "$THEME_NAME" != "Aamis" ]]; then
+  exit 0
 fi
+
+echo "🎨 Aamis theme selected — configuring Walker and Waybar..."
+
+# Walker configuration
+WALKER_THEME_DIR="$HOME/.config/walker/themes/$AAMIS_NAME"
+mkdir -p "$WALKER_THEME_DIR"
+
+THEME_WALKER_CSS="$HOME/.config/omarchy/themes/$AAMIS_NAME/walker/themes/$AAMIS_NAME/style.css"
+if [[ -f "$THEME_WALKER_CSS" ]]; then
+  cp "$THEME_WALKER_CSS" "$WALKER_THEME_DIR/style.css"
+  echo "✓ Walker theme CSS copied"
+
+  if [[ -f "$HOME/.config/walker/config.toml" ]]; then
+    cp "$HOME/.config/walker/config.toml" "$HOME/.config/walker/config.toml.bak.$(date +%s)" 2>/dev/null || true
+    if grep -q '^theme = ' "$HOME/.config/walker/config.toml"; then
+      sed -i 's/^theme = .*/theme = "'$AAMIS_NAME'"/' "$HOME/.config/walker/config.toml"
+    else
+      echo "theme = \"$AAMIS_NAME\"" >> "$HOME/.config/walker/config.toml"
+    fi
+    echo "✓ Walker config updated"
+  else
+    echo "⚠ Walker config not found: $HOME/.config/walker/config.toml"
+  fi
+else
+  echo "⚠ Walker theme CSS not found: $THEME_WALKER_CSS"
+fi
+
+# Waybar configuration
+WAYBAR_CONFIG_DIR="$HOME/.config/waybar"
+mkdir -p "$WAYBAR_CONFIG_DIR"
+THEME_WAYBAR_CSS="$HOME/.config/omarchy/themes/$AAMIS_NAME/waybar.css"
+THEME_WAYBAR_CONFIG="$HOME/.config/omarchy/themes/$AAMIS_NAME/waybar.jsonc"
+
+if [[ -f "$THEME_WAYBAR_CSS" ]]; then
+  cp "$THEME_WAYBAR_CSS" "$WAYBAR_CONFIG_DIR/style.css"
+  echo "✓ Waybar CSS copied"
+else
+  echo "⚠ Waybar CSS not found: $THEME_WAYBAR_CSS"
+fi
+
+if [[ -f "$THEME_WAYBAR_CONFIG" ]]; then
+  cp "$THEME_WAYBAR_CONFIG" "$WAYBAR_CONFIG_DIR/config.jsonc"
+  echo "✓ Waybar config copied"
+else
+  echo "⚠ Waybar config not found: $THEME_WAYBAR_CONFIG"
+fi
+
+# Restart services
+omarchy restart walker 2>/dev/null || true
+omarchy restart waybar 2>/dev/null || true
+
+echo "✓ Aamis theme hook complete."

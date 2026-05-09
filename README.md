@@ -55,7 +55,7 @@ That's it! Your app launcher (Walker) and menu bar (Waybar) now have the macOS L
 
 This repository includes a hook script at `.config/omarchy/hooks/theme-set` that configures Walker and Waybar automatically when `omarchy theme set aamis` runs.
 
-If you installed the theme through Omarchy, enable the hook like this:
+If you installed the theme from Omarchy and want the hook enabled, do this:
 
 ```bash
 mkdir -p ~/.config/omarchy/hooks
@@ -63,54 +63,23 @@ cp ~/.config/omarchy/themes/aamis/.config/omarchy/hooks/theme-set ~/.config/omar
 chmod +x ~/.config/omarchy/hooks/theme-set
 ```
 
-If you cloned the repo manually, use the bundled installer instead:
+If you installed the theme from this repository locally, use this instead:
 
 ```bash
-git clone https://github.com/marexxxxxxx/omarchy-mac.git
-cd omarchy-mac
-./install.sh
-omarchy theme set aamis
-```
-
-That script copies the entire repo into `~/.config/omarchy/themes/aamis`, installs the hook, and runs the post-install setup for Walker and Waybar.
-
-### Manual Clone Installation
-
-If you want to do the steps yourself instead of using `install.sh`:
-
-```bash
-# Clone repo
-git clone https://github.com/marexxxxxxx/omarchy-mac.git
-cd omarchy-mac
-
-# Copy the theme into Omarchy themes
-mkdir -p ~/.config/omarchy/themes/aamis
-rsync -a --exclude='.git' ./ ~/.config/omarchy/themes/aamis/
-
-# Install the hook
 mkdir -p ~/.config/omarchy/hooks
-cp .config/omarchy/hooks/theme-set ~/.config/omarchy/hooks/theme-set
+cp path/to/omarchy-mac/.config/omarchy/hooks/theme-set ~/.config/omarchy/hooks/theme-set
 chmod +x ~/.config/omarchy/hooks/theme-set
-
-# Copy walker config from repo
-mkdir -p ~/.config/walker
-cp walker/config.toml ~/.config/walker/config.toml
-
-# Run the theme installer for walker/waybar setup
-bash ~/.config/omarchy/themes/aamis/.omarchy-install ~/.config/omarchy/themes/aamis
-
-# Apply the theme
-omarchy theme set aamis
 ```
+
+Now whenever you run `omarchy theme set aamis`, Walker and Waybar will be configured automatically.
 
 ### Repo Contents for Walker Support
 
-This repo includes the Walker theme assets and hook script in these locations:
+This repo already includes the Walker theme assets and hook script in these locations:
 
-- `walker/themes/omarchy-aamis/style.css`
+- `walker/themes/aamis/style.css`
 - `.config/omarchy/hooks/theme-set`
 - `.omarchy-install`
-- `install.sh`
 - `waybar.css`
 - `waybar.jsonc`
 
