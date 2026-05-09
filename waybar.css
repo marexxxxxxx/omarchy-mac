@@ -12,7 +12,7 @@
     border: none;
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+    font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
     font-size: 12px;
     font-weight: 400;
     min-height: 0;
@@ -169,31 +169,37 @@ tooltip label {
     margin-right: 16px;
 }
 
-/* Battery */
+/* Battery - Apple-style */
 #battery {
     font-weight: 400;
     font-size: 12px;
     margin-right: 12px;
+    color: @text_white;
+    opacity: 0.9;
 }
 
 #battery.charging {
-    color: #34c759;
+    color: #30d158; /* Apple green */
+    opacity: 1.0;
 }
 
 #battery.warning {
-    color: #d4a800;
+    color: #ff9f0a; /* Apple orange */
+    opacity: 1.0;
 }
 
 #battery.critical {
-    color: @warning_red;
+    color: #ff453a; /* Apple red */
+    opacity: 1.0;
 }
 
 /* Clock */
 #clock {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Mono", "Menlo", monospace;
+    font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
     font-weight: 400;
     font-size: 12px;
     letter-spacing: 0;
+    margin-right: 16px;
 }
 
 /* === LIGHT MODE SUPPORT === */
@@ -217,4 +223,24 @@ window#waybar.light #workspaces button.active {
 window#waybar.light #custom-controlcenter {
     background: rgba(0, 122, 255, 0.3);
     color: @text_black;
+}
+
+window#waybar.light #battery {
+    color: @text_black;
+    opacity: 0.8;
+}
+
+window#waybar.light #battery.charging {
+    color: #30d158;
+    opacity: 1.0;
+}
+
+window#waybar.light #battery.warning {
+    color: #ff9f0a;
+    opacity: 1.0;
+}
+
+window#waybar.light #battery.critical {
+    color: #ff453a;
+    opacity: 1.0;
 }
