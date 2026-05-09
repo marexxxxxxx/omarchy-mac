@@ -7,12 +7,7 @@
   "margin-left": 0,
   "margin-right": 0,
   "modules-left": [
-    "custom/workspace_icon",
-    "custom/workspace_1",
-    "custom/active_workspace",
-    "custom/workspace_3",
-    "custom/workspace_4",
-    "custom/workspace_5"
+    "hyprland/workspaces"
   ],
   "modules-center": [],
   "modules-right": [
@@ -20,53 +15,44 @@
     "custom/weather",
     "custom/recording",
     "custom/headphones",
-    "custom/window_manager",
     "custom/network_link",
     "battery",
-    "custom/spotlight",
     "custom/controlcenter",
     "clock"
   ],
 
-  "custom/workspace_icon": {
-    "format": "≡",
-    "tooltip": false
-  },
-
-  "custom/workspace_1": {
-    "format": "1",
-    "tooltip": false
-  },
-
-  "custom/active_workspace": {
-    "format": "•",
-    "tooltip": "Active Workspace"
-  },
-
-  "custom/workspace_3": {
-    "format": "3",
-    "tooltip": false
-  },
-
-  "custom/workspace_4": {
-    "format": "4",
-    "tooltip": false
-  },
-
-  "custom/workspace_5": {
-    "format": "5",
-    "tooltip": false
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2", 
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10"
+    },
+    "persistent-workspaces": {
+      "*": 5
+    },
+    "on-click": "activate",
+    "active-only": false,
+    "all-outputs": false,
+    "show-special": false
   },
 
   "custom/app_notification": {
-    "format": "◈¹",
+    "format": "●¹",
     "tooltip": "App Notification",
     "tooltip-format": "1 notification"
   },
 
   "custom/weather": {
-    "format": "☀ 68°F",
-    "tooltip": "Weather",
+    "format": "☀",
+    "tooltip": "Weather - 68°F",
     "interval": 3600
   },
 
@@ -77,7 +63,10 @@
 
   "custom/headphones": {
     "format": "🎧",
-    "tooltip": "Headphones"
+    "tooltip": "Headphones Connected",
+    "exec": "pactl list sinks | grep -q 'Headphones (.*) at' && echo '{\"text\": \"🎧\", \"tooltip\": \"Headphones Connected\"}' || echo '{\"text\": \"\", \"tooltip\": \"\"}'",
+    "interval": 5,
+    "return-type": "json"
   },
 
   "custom/window_manager": {

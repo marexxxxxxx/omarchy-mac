@@ -81,11 +81,25 @@ tooltip label {
 #workspaces button {
     background: transparent;
     border: none;
-    padding: 0;
-    margin-right: 16px;
+    padding: 0 8px;
+    margin: 0;
     font-weight: 400;
     font-size: 12px;
     color: @text_white;
+    border-radius: 0;
+}
+
+#workspaces button.active {
+    background: @pill_bg;
+    color: @text_white;
+    border-radius: 12px;
+    padding: 4px 8px;
+    margin: 0 4px;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
 }
 
 /* Active workspace gets pill background */
@@ -218,6 +232,10 @@ window#waybar.light .modules-right * {
 window#waybar.light #workspaces button.active {
     background: rgba(0, 122, 255, 0.2);
     color: @text_black;
+}
+
+window#waybar.light #workspaces button:hover {
+    background: rgba(0, 0, 0, 0.1);
 }
 
 window#waybar.light #custom-controlcenter {
