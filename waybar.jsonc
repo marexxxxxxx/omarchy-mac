@@ -16,6 +16,7 @@
     "custom/recording",
     "custom/headphones",
     "custom/network_link",
+    "custom/bluetooth",
     "battery",
     "clock"
   ],
@@ -61,28 +62,32 @@
   },
 
   "custom/headphones": {
-    "format": "🎧",
-    "tooltip": "Headphones Connected",
-    "exec": "pactl list sinks | grep -q 'Headphones (.*) at' && echo '{\"text\": \"🎧\", \"tooltip\": \"Headphones Connected\"}' || echo '{\"text\": \"\", \"tooltip\": \"\"}'",
+    "format": "{icon}",
+    "format-icons": {
+      "headphones": "🎧",
+      "speakers": "🔊"
+    },
+    "exec": "pactl list sinks | grep -q 'Headphones (.*) at' && echo '{\"icon\": \"🎧\", \"tooltip\": \"Headphones Connected\"}' || echo '{\"icon\": \"🔊\", \"tooltip\": \"Speakers\"}'",
     "interval": 5,
     "return-type": "json"
-  },
-
-  "custom/window_manager": {
-    "format": "▦",
-    "tooltip": "Window Manager"
   },
 
   "custom/network_link": {
     "format": "{icon}",
     "format-icons": {
       "ethernet": "⧈",
-      "wifi": "⚚"
+      "wifi": "📶"
     },
     "tooltip": "Network Connection",
-    "exec": "ip route | grep -q 'default via' && (ip route | grep -q 'dev wlan' && echo '{\"icon\": \"⚚\", \"tooltip\": \"WiFi Connected\"}' || echo '{\"icon\": \"⧈\", \"tooltip\": \"Ethernet Connected\"}') || echo '{\"icon\": \"⛓\", \"tooltip\": \"No Network\"}'",
+    "exec": "ip route | grep -q 'default via' && (ip route | grep -q 'dev wlan' && echo '{\"icon\": \"📶\", \"tooltip\": \"WiFi Connected\"}' || echo '{\"icon\": \"⧈\", \"tooltip\": \"Ethernet Connected\"}') || echo '{\"icon\": \"⛓\", \"tooltip\": \"No Network\"}'",
     "interval": 10,
     "return-type": "json"
+  },
+
+  "custom/bluetooth": {
+    "format": "",
+    "tooltip": "Bluetooth",
+    "on-click": "notify-send 'Bluetooth' 'Toggle Bluetooth functionality'"
   },
 
   "custom/spotlight": {
@@ -102,10 +107,10 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ⚡",
-    "format-plugged": "{capacity}% 🔌",
-    "format-icons": ["🔋", "🔋", "🔋", "🔋", "🔋"],
+    "format": "{icon}",
+    "format-charging": "{icon}",
+    "format-plugged": "{icon}",
+    "format-icons": ["", "", "", "", ""],
     "tooltip-format": "Battery {capacity}%"
   },
 

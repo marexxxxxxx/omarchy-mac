@@ -24,7 +24,7 @@ window#waybar {
     background-image: none;
     color: @text_white;
     margin: 0;
-    padding: 8px 12px;
+    padding: 12px 12px 6px 12px;
 }
 
 /* Main container - transparent bar with colored sections */
@@ -154,6 +154,13 @@ tooltip label {
     font-size: 12px;
 }
 
+/* Bluetooth */
+#custom-bluetooth {
+    padding: 0;
+    margin-right: 12px;
+    font-size: 12px;
+}
+
 /* Battery - Apple-style */
 #battery {
     font-weight: 400;
@@ -207,6 +214,10 @@ window#waybar.light #workspaces button.active {
 
 window#waybar.light #workspaces button:hover {
     background: rgba(0, 0, 0, 0.1);
+}
+
+window#waybar.light #custom-bluetooth {
+    color: @text_black;
 }
 
 window#waybar.light #battery {
