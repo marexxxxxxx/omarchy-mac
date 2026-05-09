@@ -10,7 +10,7 @@
     border: none;
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "SF Pro Display", "Helvetica Neue", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
     font-size: 12px;
     font-weight: 400;
     min-height: 0;
@@ -23,6 +23,7 @@ window#waybar {
     color: @text_white;
     margin: 0;
     padding: 0;
+    height: 28px;
 }
 
 /* Main container - continuous bar */
@@ -36,18 +37,17 @@ window#waybar {
     margin: 0;
     display: flex;
     align-items: center;
+    height: 28px;
 }
 
 .modules-left {
     padding-left: 24px;
     padding-right: 0;
-    spacing: 16px;
 }
 
 .modules-right {
     padding-right: 24px;
     padding-left: 0;
-    spacing: 12px;
 }
 
 .modules-center {
@@ -69,6 +69,7 @@ tooltip label {
 
 /* === LEFT SECTION: WORKSPACE SWITCHER === */
 
+/* Workspace icon (≡) */
 #custom-workspace_icon {
     padding: 0;
     margin-right: 16px;
@@ -76,124 +77,112 @@ tooltip label {
     font-weight: 400;
 }
 
-#custom-workspace_label {
-    padding: 0;
-    margin-right: 16px;
-    font-weight: 500;
-    font-size: 12px;
-}
-
-/* Workspaces - Active indicator pill */
-#workspaces {
-    background: transparent;
-    margin: 0;
-    padding: 0;
-}
-
-#workspaces button {
-    background: transparent;
-    border: none;
+/* Workspace number "1" */
+#custom-workspace_1 {
     padding: 0;
     margin-right: 16px;
     font-weight: 400;
     font-size: 12px;
-    color: @text_white;
-    min-width: auto;
-    min-height: auto;
 }
 
-/* Active workspace gets pill background */
-#workspaces button.active {
+/* Active workspace indicator - pill with dot */
+#custom-active_workspace {
     background: @pill_bg;
     border-radius: 12px;
     padding: 4px 10px;
     color: @text_white;
-    font-weight: 500;
+    font-weight: 400;
+    font-size: 12px;
     margin-right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#workspaces button.urgent {
-    color: @warning_red;
-}
-
-#workspaces button:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-}
-
-/* Workspace labels (3, 4, 5) */
+/* Workspace numbers 3, 4, 5 */
 #custom-workspace_3,
 #custom-workspace_4,
 #custom-workspace_5 {
     padding: 0;
     margin-right: 16px;
     font-size: 12px;
-    color: @text_white;
     font-weight: 400;
 }
 
 /* === CENTER SECTION === */
-/* Empty - no modules */
+/* Empty - continuous background */
 
 /* === RIGHT SECTION: STATUS ICONS === */
 
-/* System icons base styling */
-#custom-app_notification,
-#custom-weather,
-#custom-recording,
-#custom-headphones,
-#custom-window_manager,
-#custom-network_link,
-#battery,
-#custom-spotlight,
-#custom-controlcenter,
-#clock {
-    padding: 0;
-    margin: 0;
-    font-size: 12px;
-    color: @icon_color;
-    min-width: auto;
-    min-height: auto;
-}
-
 /* App notification with badge */
 #custom-app_notification {
+    position: relative;
+    padding: 0;
+    margin-right: 12px;
     font-size: 12px;
     font-weight: 400;
 }
 
-/* Weather icon + temperature */
+#custom-app_notification::after {
+    content: "1";
+    position: absolute;
+    bottom: -2px;
+    left: -2px;
+    background: @warning_red;
+    color: @text_white;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    font-size: 8px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Weather display */
 #custom-weather {
+    padding: 0;
+    margin-right: 12px;
     font-weight: 400;
     font-size: 12px;
     letter-spacing: -0.5px;
 }
 
-/* Recording indicator */
+/* Recording status */
 #custom-recording {
+    padding: 0;
+    margin-right: 12px;
     font-size: 12px;
 }
 
 /* Headphones */
 #custom-headphones {
+    padding: 0;
+    margin-right: 12px;
     font-size: 13px;
 }
 
 /* Window manager */
 #custom-window_manager {
+    padding: 0;
+    margin-right: 12px;
     font-size: 12px;
     font-weight: 400;
 }
 
 /* Network link */
 #custom-network_link {
+    padding: 0;
+    margin-right: 12px;
     font-size: 12px;
 }
 
-/* Battery styling */
+/* Battery */
 #battery {
     font-weight: 400;
     font-size: 12px;
+    margin-right: 12px;
     display: flex;
     align-items: center;
 }
@@ -212,12 +201,13 @@ tooltip label {
 
 /* Spotlight search */
 #custom-spotlight {
+    padding: 0;
+    margin-right: 12px;
     font-size: 13px;
     font-weight: 400;
-    margin-right: 12px;
 }
 
-/* Control Center - Pill background */
+/* Control Center - Active pill */
 #custom-controlcenter {
     background: @pill_bg;
     border-radius: 12px;
@@ -225,24 +215,15 @@ tooltip label {
     color: @text_white;
     font-weight: 400;
     font-size: 12px;
+    margin-right: 16px;
     display: flex;
     align-items: center;
 }
 
-#custom-controlcenter:hover {
-    background: rgba(100, 130, 180, 0.5);
-}
-
-/* Clock styling */
+/* Clock */
 #clock {
     font-family: -apple-system, BlinkMacSystemFont, "SF Mono", "Menlo", monospace;
     font-weight: 400;
     font-size: 12px;
-    margin-left: 16px;
     letter-spacing: 0;
-}
-
-/* Right-side spacing */
-#battery {
-    margin-right: 8px;
 }

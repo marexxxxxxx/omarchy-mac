@@ -8,7 +8,8 @@
   "margin-right": 0,
   "modules-left": [
     "custom/workspace_icon",
-    "hyprland/workspaces",
+    "custom/workspace_1",
+    "custom/active_workspace",
     "custom/workspace_3",
     "custom/workspace_4",
     "custom/workspace_5"
@@ -32,19 +33,14 @@
     "tooltip": false
   },
 
-  "hyprland/workspaces": {
-    "format": "{icon}",
-    "on-click": "activate",
-    "format-icons": {
-      "1": "1",
-      "2": "2",
-      "3": "",
-      "4": "",
-      "5": "",
-      "urgent": "!",
-      "active": "●",
-      "default": ""
-    }
+  "custom/workspace_1": {
+    "format": "1",
+    "tooltip": false
+  },
+
+  "custom/active_workspace": {
+    "format": "•",
+    "tooltip": "Active Workspace"
   },
 
   "custom/workspace_3": {
@@ -63,7 +59,7 @@
   },
 
   "custom/app_notification": {
-    "format": "◈¹",
+    "format": "◈",
     "tooltip": "App Notification",
     "tooltip-format": "1 notification"
   },
